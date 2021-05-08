@@ -1,0 +1,7 @@
+{# Fragmento de codigo reutilizable en otros htmls #}
+
+{% for message in messages %}
+    <div class="alert alert-{{ message.tag }}" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}

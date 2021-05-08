@@ -44,3 +44,7 @@ ItemModel.objects.filter(pvp__gt=5)     # Devuelve listado de items con pvp mayo
 
 ### Django managment user
 python manage.py createsuperuser # Crea un superusuario que puede acceder al admin site.
+
+### Django import and export
+python manage.py dumpdata catalogue # Para exportar.
+python manage.py loaddata catalogue # Para importar

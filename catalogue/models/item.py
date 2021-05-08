@@ -21,8 +21,10 @@ class ItemModel(models.Model):
         decimal_places=3, max_digits=8, verbose_name="Precio de venta",
         help_text="Precio de venta del item."
     )
-
-    # TODO: Foto
+    photo = models.ImageField(
+        verbose_name="Imagen", help_text="Foto principal del producto", null=True, blank=True,
+        upload_to='item'
+    )
 
     class Meta:
         verbose_name = "Item"
