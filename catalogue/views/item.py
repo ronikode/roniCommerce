@@ -18,7 +18,7 @@ def items_list(request):
     """
     items = ItemModel.objects.filter(pvp__gt=5)  # Select * from item_model; -> [Queryset]
     # render(object request, <name_html>, context-> dict
-    return render(request, "base.html", {"products": items, "message": "Promociones"})
+    return render(request, "catalogue/index.html", {"products": items, "message": "Promociones"})
 
 
 # POST - CREATE
@@ -43,7 +43,7 @@ class ItemViewList(ListView):
 
     """
     model = ItemModel
-    template_name = "base.html"
+    template_name = "catalogue/index.html"
     context_object_name = "products"
     queryset = ItemModel.objects.filter(pvp__gt=5)  # >
 

@@ -36,11 +36,11 @@ COMMIT;
 python manage.py shell
 
 - Ej:
-from catalogue.models.item import ItemModel
-ItemModel.objects.all()                 # Consulta todos los items
-ItemModel.objects.create(name="Item A", description="Item A", pvp=10)  # Crea un registro en bd.
-ItemModel.objects.count()               # Cantidad de registros
-ItemModel.objects.filter(pvp__gt=5)     # Devuelve listado de items con pvp mayor que 5.
+ from catalogue.models.item import ItemModel
+ ItemModel.objects.all()                 # Consulta todos los items
+ ItemModel.objects.create(name="Item A", description="Item A", pvp=10)  # Crea un registro en bd.
+ ItemModel.objects.count()               # Cantidad de registros
+ ItemModel.objects.filter(pvp__gt=5)     # Devuelve listado de items con pvp mayor que 5.
 
 ### Django managment user
 python manage.py createsuperuser # Crea un superusuario que puede acceder al admin site.

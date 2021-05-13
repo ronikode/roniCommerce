@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block extra-css %}
+    <style>
+        .container h1{
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+        <div style="float: right; margin-top: 10px">
+            <a href="{% url 'users:logout' %}" type="button">Cerrar sesion</a>
+        </div>
+    {% else %}
+         <div style="float: right; margin-top: 10px">
+            <a href="{% url 'users:login' %}" type="button">Mi cuenta</a>
+        </div>
+    {% endif %}
+
+    <div class="container py-5">
+        <h1>Mis productos y sus {{ message }}</h1>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for item in products %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>${{ item.pvp }}</td>
+                    <td>{{ item.description }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

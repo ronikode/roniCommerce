@@ -9,15 +9,12 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-$y@kfkig=xl9)&)d8!xyr6w@(1v-eh6jcbkfyrza!i$^z8+kwi'
@@ -45,6 +42,7 @@ INSTALLED_APPS = [
 
     # LOCAL
     'catalogue.apps.CatalogueConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-
+            BASE_DIR / "config/templates"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,6 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "config/static",
+]
 
 MEDIA_URL = '/media/'
 

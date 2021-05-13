@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- Custom CSS -->
+    <title>Ronicommerce Inicio | {% block title %}{% endblock %}</title>
+    {% block extra-css %}{% endblock %}
+</head>
+<body>
+
+{# Llamando a un fragmento de codigo html #}
+{% include 'partials/messages.html' %}
+
+{# todo partials headers #}
+
+{% block content %}
+{% endblock %}
+
+
+{# todo partials footer #}
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% block extra-js %}{% endblock %}
+</body>
+</html>
