@@ -10,6 +10,11 @@ from django.db import models
 
 class ItemModel(models.Model):
     # id (primary key unique autoincrement) 1, 2, 9
+    category = models.ForeignKey(
+        'catalogue.CategoryModel', verbose_name="Categoría",
+        on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='items'
+    )  # Uno a muchos
     name = models.CharField(verbose_name="Nombre", max_length=150,
                             help_text="Nombre del item")  # varchar en bd o string.
     sku = models.CharField(max_length=20, verbose_name="Codigo", help_text="Codigo del producto")
