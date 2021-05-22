@@ -27,7 +27,7 @@ def cart_add(request, item_id):
             override_quantity=data.get("override")
         )
         messages.success(request, "Item agregado exitosamente!")
-    return redirect("")  # Redirect cartDetail
+    return redirect("carts:cart_detail")  # Redirect cartDetail
 
 
 @require_POST
@@ -36,4 +36,9 @@ def cart_remove(request, item_id):
     item = get_object_or_404(ItemModel, id=item_id)
     cart.remove(item=item)
     messages.success(request, "Item removido exitosamente del carrito!")
-    return redirect("")  # Redirect cartDetail
+    return redirect("carts:cart_detail")  # Redirect cartDetail
+
+
+def cart_detail(request):
+    cart = Cart(request=request)
+    return render(request, "carts/detail.html", {"cart": cart})

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # LOCAL
     'catalogue.apps.CatalogueConfig',
     'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
     'users.apps.UsersConfig'
 ]
 

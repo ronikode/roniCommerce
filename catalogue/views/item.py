@@ -4,11 +4,13 @@ View: For management info about items.
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView
 
+from carts.forms import CartAddItemForm
 from catalogue.forms import ItemBasicForm, ItemModelForm
 from catalogue.models import ItemModel, CategoryModel
 
@@ -70,3 +72,21 @@ def item_catalogue(request, category_slug: str = None):
         items = items.filter(category=category)  # []
     return render(request, "catalogue/list.html",
                   {"category": category, "categories": qs_categories, "items": items})
+
+
+def item_detail(request, id: int, slug: str):
+    item = get_object_or_404(ItemModel, id=id, slug=slug)
+    cart_item_from = CartAddItemForm()
+    return render(request, "catalogue/detail.html", {"item": item, "cart_item_form": cart_item_from})
+
+
+# Search
+def item_search(request):
+    """
+
+    """
+    search_param = request.get("search")
+    qs_items = ItemModel.objects.filter(
+        Q(name__icontains=search_param) or Q(category__name__icontains=search_param)
+    )
+    return render(request, "catalogue/list.html", {"items": qs_items})
