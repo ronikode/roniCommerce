@@ -23,7 +23,8 @@ urlpatterns = [
 
                   path('', include('catalogue.urls', namespace="catalogue")),
                   path('carts/', include("carts.urls", namespace="carts")),
-                  path('users/', include("users.urls", namespace="users"))
+                  path('users/', include("users.urls", namespace="users")),
+                  path('orders/', include("orders.urls", namespace="orders"))
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
